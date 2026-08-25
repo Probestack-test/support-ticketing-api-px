@@ -1,0 +1,164 @@
+{
+  "microserviceId" : "6a8d9d7e6dbbd93a1267c276",
+  "mocks" : [ {
+    "id" : "e3934188-0916-4daf-8778-841801b17656",
+    "microserviceId" : "6a8d9d7e6dbbd93a1267c276",
+    "specMetadataId" : "6a8d9da96406a561b68ed679",
+    "apiSpecName" : "Support Ticketing API",
+    "name" : "mock-support-ticketing-api",
+    "mockServiceName" : "mock-support-ticketing-api",
+    "mockServerUrl" : "https://forgesphere.probestack.io/mock-api/v1/api/mocks/mock-b0f10b7c",
+    "responseLatencyMs" : 0,
+    "mockUrl" : "mock-b0f10b7c",
+    "isPrivate" : true,
+    "delayMs" : 0,
+    "requestCount" : 0,
+    "createdAt" : "2026-08-25T13:50:42.736Z",
+    "updatedAt" : "2026-08-25T13:50:42.745Z",
+    "endpoints" : [ {
+      "id" : "3e1c147e-d998-44b5-a7cb-e608842f333b",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/customers/{customerId}",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"name\":\"string\",\"email\":\"string\",\"plan\":\"FREE\",\"openTicketCount\":0,\"accountManager\":{\"name\":\"string\",\"email\":\"string\"}}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.851Z",
+      "updatedAt" : "2026-08-25T13:50:42.852Z"
+    }, {
+      "id" : "86e61e26-043b-4af0-bf9c-f3765d521f64",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"items\":[{\"id\":\"string\",\"subject\":\"string\",\"description\":\"string\",\"status\":\"OPEN\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"customerEmail\":\"string\",\"assigneeEmail\":\"string\",\"tags\":[\"string\"],\"createdAt\":\"2024-01-01T00:00:00Z\",\"updatedAt\":\"2024-01-01T00:00:00Z\"}],\"nextCursor\":\"string\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.772Z",
+      "updatedAt" : "2026-08-25T13:50:42.773Z"
+    }, {
+      "id" : "25573f23-ce8e-40ca-8870-e1ab6af742db",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets",
+      "method" : "POST",
+      "responseStatus" : 201,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"subject\":\"string\",\"description\":\"string\",\"status\":\"OPEN\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"customerEmail\":\"string\",\"assigneeEmail\":\"string\",\"tags\":[\"string\"],\"createdAt\":\"2024-01-01T00:00:00Z\",\"updatedAt\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"subject\":\"string\",\"description\":\"string\",\"customerEmail\":\"string\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"tags\":[\"string\"]}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.786Z",
+      "updatedAt" : "2026-08-25T13:50:42.786Z"
+    }, {
+      "id" : "a22b571d-1695-4e5a-a0d5-aba10c24676a",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets/{ticketId}",
+      "method" : "DELETE",
+      "responseStatus" : 204,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.810Z",
+      "updatedAt" : "2026-08-25T13:50:42.810Z"
+    }, {
+      "id" : "8091607b-e7c6-412a-a26d-b4630b6c6c44",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets/{ticketId}",
+      "method" : "GET",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"subject\":\"string\",\"description\":\"string\",\"status\":\"OPEN\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"customerEmail\":\"string\",\"assigneeEmail\":\"string\",\"tags\":[\"string\"],\"createdAt\":\"2024-01-01T00:00:00Z\",\"updatedAt\":\"2024-01-01T00:00:00Z\",\"replies\":[{\"id\":\"string\",\"message\":\"string\",\"authorEmail\":\"string\",\"internal\":false,\"createdAt\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"fileName\":\"string\",\"url\":\"string\",\"sizeBytes\":0}]}]}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : null,
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.799Z",
+      "updatedAt" : "2026-08-25T13:50:42.799Z"
+    }, {
+      "id" : "a4ce2f28-d7f0-4f6a-a31f-6a4ddc9f6ea2",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets/{ticketId}",
+      "method" : "PATCH",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"subject\":\"string\",\"description\":\"string\",\"status\":\"OPEN\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"customerEmail\":\"string\",\"assigneeEmail\":\"string\",\"tags\":[\"string\"],\"createdAt\":\"2024-01-01T00:00:00Z\",\"updatedAt\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"status\":\"OPEN\",\"priority\":\"LOW\",\"assigneeEmail\":\"string\",\"resolutionNotes\":\"string\"}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.820Z",
+      "updatedAt" : "2026-08-25T13:50:42.821Z"
+    }, {
+      "id" : "291a205d-bd31-400d-88c3-e7fd88f916f1",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets/{ticketId}/escalate",
+      "method" : "POST",
+      "responseStatus" : 200,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"subject\":\"string\",\"description\":\"string\",\"status\":\"OPEN\",\"priority\":\"LOW\",\"category\":\"BILLING\",\"customerEmail\":\"string\",\"assigneeEmail\":\"string\",\"tags\":[\"string\"],\"createdAt\":\"2024-01-01T00:00:00Z\",\"updatedAt\":\"2024-01-01T00:00:00Z\"}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"reason\":\"string\",\"escalateToTeam\":\"ENGINEERING\"}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.841Z",
+      "updatedAt" : "2026-08-25T13:50:42.842Z"
+    }, {
+      "id" : "dcf0e560-12fd-44d5-bb74-acb99ccb59b3",
+      "mockId" : "e3934188-0916-4daf-8778-841801b17656",
+      "path" : "/tickets/{ticketId}/replies",
+      "method" : "POST",
+      "responseStatus" : 201,
+      "responseHeaders" : {
+        "Content-Type" : "application/json"
+      },
+      "responseBody" : "{\"id\":\"string\",\"message\":\"string\",\"authorEmail\":\"string\",\"internal\":false,\"createdAt\":\"2024-01-01T00:00:00Z\",\"attachments\":[{\"fileName\":\"string\",\"url\":\"string\",\"sizeBytes\":0}]}",
+      "delayMs" : 0,
+      "isActive" : true,
+      "requestBodySample" : "{\"message\":\"string\",\"authorEmail\":\"string\",\"internal\":false,\"attachments\":[{\"fileName\":\"string\",\"url\":\"string\",\"sizeBytes\":0}]}",
+      "validationMode" : "NONE",
+      "validationSchema" : null,
+      "validateMethod" : true,
+      "createdAt" : "2026-08-25T13:50:42.829Z",
+      "updatedAt" : "2026-08-25T13:50:42.831Z"
+    } ]
+  } ]
+}

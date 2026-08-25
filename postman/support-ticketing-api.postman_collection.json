@@ -1,0 +1,273 @@
+{
+  "info" : {
+    "name" : "support-ticketing-api Postman Collection",
+    "description" : "A customer support ticketing API — search/create/update tickets, post replies with attachments, escalate, and look up customer profiles. Used to end-to-end test MCP generation (spec parse into tools, mock server, contract testing, code analysis) with richer schemas than a plain CRUD example: nested objects, arrays of objects, enums, and pagination.\n\n\nOpenAPI version: 1.0.0",
+    "schema" : "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth" : {
+    "type" : "bearer",
+    "bearer" : [ {
+      "key" : "token",
+      "value" : "{{accessToken}}",
+      "type" : "string"
+    } ]
+  },
+  "variable" : [ {
+    "key" : "baseUrl",
+    "value" : "https://api.support.example.com/v1",
+    "type" : "string",
+    "description" : "Override with the base URL of the deployed Apigee proxy."
+  }, {
+    "key" : "accessToken",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "status",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by ticket status"
+  }, {
+    "key" : "priority",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by priority level"
+  }, {
+    "key" : "assigneeEmail",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter by assigned agent's email"
+  }, {
+    "key" : "cursor",
+    "value" : "",
+    "type" : "string",
+    "description" : "Pagination cursor from a previous response"
+  }, {
+    "key" : "limit",
+    "value" : "",
+    "type" : "string",
+    "description" : "Maximum number of tickets to return (1-100)"
+  }, {
+    "key" : "ticketId",
+    "value" : "",
+    "type" : "string",
+    "description" : "Unique ID of the ticket"
+  }, {
+    "key" : "customerId",
+    "value" : "",
+    "type" : "string",
+    "description" : "Unique ID of the customer"
+  } ],
+  "item" : [ {
+    "name" : "Search / list support tickets",
+    "request" : {
+      "method" : "GET",
+      "description" : "Search / list support tickets\n\nResponses:\n- 200: Matching tickets",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets?status={{status}}&priority={{priority}}&assigneeEmail={{assigneeEmail}}&cursor={{cursor}}&limit={{limit}}",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets" ],
+        "query" : [ {
+          "key" : "status",
+          "value" : "{{status}}",
+          "disabled" : true,
+          "description" : "Filter by ticket status"
+        }, {
+          "key" : "priority",
+          "value" : "{{priority}}",
+          "disabled" : true,
+          "description" : "Filter by priority level"
+        }, {
+          "key" : "assigneeEmail",
+          "value" : "{{assigneeEmail}}",
+          "disabled" : true,
+          "description" : "Filter by assigned agent's email"
+        }, {
+          "key" : "cursor",
+          "value" : "{{cursor}}",
+          "disabled" : true,
+          "description" : "Pagination cursor from a previous response"
+        }, {
+          "key" : "limit",
+          "value" : "{{limit}}",
+          "disabled" : true,
+          "description" : "Maximum number of tickets to return (1-100)"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Create a new support ticket",
+    "request" : {
+      "method" : "POST",
+      "description" : "Create a new support ticket\n\nResponses:\n- 201: Ticket created",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets" ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Get a ticket by ID",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get a ticket by ID\n\nResponses:\n- 200: Ticket found\n- 404: Ticket not found",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets/:ticketId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets", ":ticketId" ],
+        "variable" : [ {
+          "key" : "ticketId",
+          "value" : "{{ticketId}}",
+          "description" : "Unique ID of the ticket"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Close and archive a ticket",
+    "request" : {
+      "method" : "DELETE",
+      "description" : "Close and archive a ticket\n\nResponses:\n- 204: Ticket closed successfully",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets/:ticketId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets", ":ticketId" ],
+        "variable" : [ {
+          "key" : "ticketId",
+          "value" : "{{ticketId}}",
+          "description" : "Unique ID of the ticket to close"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Update a ticket's status, priority or assignee",
+    "request" : {
+      "method" : "PATCH",
+      "description" : "Update a ticket's status, priority or assignee\n\nResponses:\n- 200: Ticket updated",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets/:ticketId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets", ":ticketId" ],
+        "variable" : [ {
+          "key" : "ticketId",
+          "value" : "{{ticketId}}",
+          "description" : "Unique ID of the ticket to update"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Post a reply on a ticket",
+    "request" : {
+      "method" : "POST",
+      "description" : "Post a reply on a ticket\n\nResponses:\n- 201: Reply added",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets/:ticketId/replies",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets", ":ticketId", "replies" ],
+        "variable" : [ {
+          "key" : "ticketId",
+          "value" : "{{ticketId}}",
+          "description" : "Unique ID of the ticket"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Escalate a ticket to a senior agent or team",
+    "request" : {
+      "method" : "POST",
+      "description" : "Escalate a ticket to a senior agent or team\n\nResponses:\n- 200: Ticket escalated",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/tickets/:ticketId/escalate",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "tickets", ":ticketId", "escalate" ],
+        "variable" : [ {
+          "key" : "ticketId",
+          "value" : "{{ticketId}}",
+          "description" : "Unique ID of the ticket to escalate"
+        } ]
+      }
+    },
+    "response" : [ ]
+  }, {
+    "name" : "Get a customer's profile and account summary",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get a customer's profile and account summary\n\nResponses:\n- 200: Customer profile\n- 404: Customer not found",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/customers/:customerId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "customers", ":customerId" ],
+        "variable" : [ {
+          "key" : "customerId",
+          "value" : "{{customerId}}",
+          "description" : "Unique ID of the customer"
+        } ]
+      }
+    },
+    "response" : [ ]
+  } ]
+}
