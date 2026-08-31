@@ -3,7 +3,7 @@ name: Apigee Platform CI
 on:
   push:
     branches:
-      - main
+      - feature-dev
 
 jobs:
   deploy:
@@ -16,6 +16,8 @@ jobs:
       apigee_env: dev
       deploy_proxy: support-ticketing-api
       resourcetype: apis
+      branch_name: ${{ github.ref_name }}
+      branch_tag: release
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
