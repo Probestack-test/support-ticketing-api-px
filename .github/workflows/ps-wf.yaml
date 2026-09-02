@@ -3,7 +3,7 @@ name: Apigee Platform CI
 on:
   push:
     branches:
-      - feature-dev
+      - feature-adarsha
 
 jobs:
   deploy:
